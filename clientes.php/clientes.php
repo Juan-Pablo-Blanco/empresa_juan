@@ -3,30 +3,13 @@
     require_once ("php/mis_funciones.php");
     require_once ("php/arreglo.php");
 
-// --- 1. Parámetros de conexión a la base de datos ---
-    $db_host = "localhost"; // Servidor, usualmente "localhost" o "127.0.0.1"
-    $db_user = "root"; // Usuario de la base de datos (por defecto 'root' en XAMPP)
-    $db_pass = ""; // Contraseña (por defecto vacía en XAMPP)
-    $db_name = "empresa_db"; // El nombre de tu base de datos
+// conexion a base de datos
 
-
-// --- 2. Establecer la conexión usando MySQLi ---
-    $conexion = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
-// --- 3. Verificar si la conexión fue exitosa ---
-    if ($conexion->connect_error) {
-
-// die() detiene la ejecución del script y muestra un mensaje
-    die("<div class='error-message'>❌ Error de conexión: " . $conexion->connect_error . "</div>");
-    }
-
-// Para asegurar que los caracteres (acentos, ñ) se muestren correctamente
-        $conexion->set_charset("utf8");
-
+    $conexion = conectarBD();
 
 // --- 4. Preparar la consulta SQL ---
     $sql = "SELECT Nombre, Apellido, Empresa, Domicilio, Ciudad, Pais, Telefono, Email FROM clientes";
-        $resultado = $conexion->query($sql);
+    $resultado = $conexion->query($sql);
 
 ?>
 
@@ -37,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Clientes</title>
 
-    <link rel="stylesheet" href="css/hoja_estilo_clientes.css">
+    <link rel="stylesheet" href="css/estilo_clientes.css">
 
 </head>
 <body>

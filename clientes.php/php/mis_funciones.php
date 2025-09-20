@@ -6,7 +6,7 @@ function conectarBD() {
     $clave = "";
     $bd = "empresa_db";
 
-    $conexion = new mysqli($db_host, $db_user, $db_pass, $db_name);
+    $conexion = new mysqli($host, $usuario, $clave, $bd);
 
     if ($conexion->connect_error) {
         die("<div class='error-message'>❌ Error de conexión: " . $conexion->connect_error . "</div>");
@@ -15,7 +15,6 @@ function conectarBD() {
     $conexion->set_charset("utf8");
     return $conexion;
 }
-
 
 
 
